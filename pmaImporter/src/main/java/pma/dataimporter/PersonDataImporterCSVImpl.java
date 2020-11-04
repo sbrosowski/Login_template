@@ -2,11 +2,11 @@ package pma.dataimporter;
 
 import com.opencsv.CSVReader;
 
-public class PersonDataImportCSVImpl extends AbstractPersonDataImport {
+public class PersonDataImporterCSVImpl extends AbstractPersonDataImporter {
 
     private CSVReader csvReader;
 
-    public PersonDataImportCSVImpl(){
+    public PersonDataImporterCSVImpl(){
 
     }
 

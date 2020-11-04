@@ -1,6 +1,7 @@
 package pma.dataimporter.factories;
 
-import pma.dataimporter.interfaces.PersonDataImport;
+import pma.dataimporter.PersonDataImporterCSVImpl;
+import pma.dataimporter.interfaces.PersonDataImporter;
 
 public class PersonDataImportFactory {
 
@@ -17,8 +18,8 @@ public class PersonDataImportFactory {
         return _Instance;
     }
 
-    public PersonDataImport getPersonDataImport(){
-        return null;
+    public PersonDataImporter getPersonDataImporterCSV(){
+        return new PersonDataImporterCSVImpl();
     }
 
 

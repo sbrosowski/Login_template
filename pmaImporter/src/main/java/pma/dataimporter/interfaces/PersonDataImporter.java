@@ -1,6 +1,6 @@
 package pma.dataimporter.interfaces;
 
-public interface PersonDataImport {
+public interface PersonDataImporter {
 
     void importData();
 
