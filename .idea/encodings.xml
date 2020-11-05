@@ -11,6 +11,13 @@
     <file url="file://$PROJECT_DIR$/pmaImporter" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/pmaImporter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/pmaImporter/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pmaImporter/src/test/java/dataimporter/testdaten/birthday/PersonWithBirthday.csv" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/pmaImporter/src/test/java/dataimporter/testdaten/birthday/PersonWithoutBirthday.csv" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/pmaImporter/src/test/java/dataimporter/testdaten/newsletter/PersonNewsletterJa.csv" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/pmaImporter/src/test/java/dataimporter/testdaten/newsletter/PersonNewsletterLeer.csv" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/pmaImporter/src/test/java/dataimporter/testdaten/newsletter/PersonNewsletterNein.csv" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/pmaImporter/src/test/java/dataimporter/testdaten/titel/PersonWithTitle.csv" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/pmaImporter/src/test/java/dataimporter/testdaten/titel/PersonWithoutTitle.csv" charset="windows-1252" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

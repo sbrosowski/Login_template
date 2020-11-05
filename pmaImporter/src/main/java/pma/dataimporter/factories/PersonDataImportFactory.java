@@ -3,6 +3,8 @@ package pma.dataimporter.factories;
 import pma.dataimporter.PersonDataImporterCSVImpl;
 import pma.dataimporter.interfaces.PersonDataImporter;
 
+import java.io.FileReader;
+
 public class PersonDataImportFactory {
 
     private static PersonDataImportFactory _Instance;
@@ -18,8 +20,8 @@ public class PersonDataImportFactory {
         return _Instance;
     }
 
-    public PersonDataImporter getPersonDataImporterCSV(){
-        return new PersonDataImporterCSVImpl();
+    public PersonDataImporter getPersonDataImporterCSV(FileReader reader){
+        return new PersonDataImporterCSVImpl(reader);
     }
 
 

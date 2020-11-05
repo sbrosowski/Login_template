@@ -1,7 +1,11 @@
 package pma.dataimporter.interfaces;
 
+import pma.personendaten.interfaces.Person;
+
+import java.util.List;
+
 public interface PersonDataImporter {
 
-    void importData();
+    List<Person> importData();
 
 }
