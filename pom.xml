@@ -54,12 +54,14 @@
             <version>1.10.19</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <modules>
         <module>pmaEntities</module>
         <module>pmaDao</module>
         <module>pmaImporter</module>
+        <module>pmaUIAngularJS</module>
     </modules>
 
 

@@ -1,26 +1,25 @@
 package pma.dataimporter;
 
-import com.opencsv.CSVReader;
-import com.opencsv.bean.CsvToBean;
-import pma.personendaten.interfaces.Person;
+import com.opencsv.bean.CsvToBeanBuilder;
+import pma.personendaten.beans.PersonCSV;
 
 import java.io.FileReader;
 import java.util.List;
 
 public class PersonDataImporterCSVImpl extends AbstractPersonDataImporter {
 
-    private final CSVReader csvReader;
+    private final CsvToBeanBuilder<PersonCSV> readToBean;
 
 
     public PersonDataImporterCSVImpl(FileReader reader){
-        csvReader=new CSVReader(reader);
+        readToBean=new CsvToBeanBuilder<>(reader);
+        readToBean.withType(PersonCSV.class);
+        readToBean.withSeparator(';');
 
     }
 
     @Override
-    public List<Person> importData() {
-        CsvToBean<Person> readToBean =new CsvToBean<>();
-        readToBean.setCsvReader(csvReader);
-        return readToBean.parse();
+    public List<PersonCSV> importData() {
+        return readToBean.build().parse();
     }
 }

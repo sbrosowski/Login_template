@@ -1,16 +1,16 @@
-package pma.personendaten;
+package pma.personendaten.beans;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvDate;
 import com.opencsv.bean.CsvRecurse;
-import pma.personendaten.interfaces.Person;
+import pma.personendaten.CSVConstants;
 
 import java.util.Date;
 
 /**
  * Created by siegf on 03.11.2020.
  */
-public class PersonCSVImpl implements Person {
+public class PersonCSV {
 
     @CsvBindByName(column = CSVConstants.FIRST_NAME)
     private String firstName;
@@ -22,7 +22,7 @@ public class PersonCSVImpl implements Person {
     private String salutation;
 
     @CsvRecurse
-    private AddressImpl address;
+    private AddressCSV address;
 
     @CsvBindByName(column = CSVConstants.TITLE)
     private String title;
@@ -113,5 +113,13 @@ public class PersonCSVImpl implements Person {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public AddressCSV getAddress() {
+        return address;
+    }
+
+    public void setAddress(AddressCSV address) {
+        this.address = address;
     }
 }

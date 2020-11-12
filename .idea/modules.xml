@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/pmaDao/pmaDao.iml" filepath="$PROJECT_DIR$/pmaDao/pmaDao.iml" />
       <module fileurl="file://$PROJECT_DIR$/pmaEntities/pmaEntities.iml" filepath="$PROJECT_DIR$/pmaEntities/pmaEntities.iml" />
       <module fileurl="file://$PROJECT_DIR$/pmaImporter/pmaImporter.iml" filepath="$PROJECT_DIR$/pmaImporter/pmaImporter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pmaUIAngularJS/pmaUIAngularJS.iml" filepath="$PROJECT_DIR$/pmaUIAngularJS/pmaUIAngularJS.iml" />
     </modules>
   </component>
 </project>

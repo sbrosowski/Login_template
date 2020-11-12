@@ -1,9 +1,9 @@
-package pma.personendaten;
+package pma.personendaten.beans;
 
 import com.opencsv.bean.CsvBindByName;
-import pma.personendaten.interfaces.Address;
+import pma.personendaten.CSVConstants;
 
-public class AddressCSVImpl implements Address {
+public class AddressCSV {
 
     @CsvBindByName(column = CSVConstants.STREET)
     private String strasse;
@@ -15,42 +15,42 @@ public class AddressCSVImpl implements Address {
 
     private String stadt;
 
-    @Override
+
     public String getStrasse() {
         return strasse;
     }
 
-    @Override
+
     public void setStrasse(String strasse) {
         this.strasse = strasse;
     }
 
-    @Override
+
     public String getHausnummer() {
         return hausnummer;
     }
 
-    @Override
+
     public void setHausnummer(String hausnummer) {
         this.hausnummer = hausnummer;
     }
 
-    @Override
+
     public String getPostleitzahl() {
         return postleitzahl;
     }
 
-    @Override
+
     public void setPostleitzahl(String postleitzahl) {
         this.postleitzahl = postleitzahl;
     }
 
-    @Override
+
     public String getStadt() {
         return stadt;
     }
 
-    @Override
+
     public void setStadt(String stadt) {
         this.stadt = stadt;
     }
