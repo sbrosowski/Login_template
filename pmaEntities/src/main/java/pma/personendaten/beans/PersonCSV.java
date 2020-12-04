@@ -3,7 +3,7 @@ package pma.personendaten.beans;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvDate;
 import com.opencsv.bean.CsvRecurse;
-import pma.personendaten.CSVConstants;
+import pma.personendaten.constants.CSVConstants;
 
 import java.util.Date;
 

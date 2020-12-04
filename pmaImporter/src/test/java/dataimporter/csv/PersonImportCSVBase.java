@@ -1,6 +1,6 @@
 package dataimporter.csv;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import pma.dataimporter.factories.PersonDataImportFactory;
 import pma.dataimporter.interfaces.PersonDataImporter;
 import pma.personendaten.beans.PersonCSV;
@@ -11,7 +11,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PersonImportCSVBase {
 

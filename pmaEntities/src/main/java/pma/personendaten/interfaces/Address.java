@@ -1,19 +1,19 @@
 package pma.personendaten.interfaces;
 
-public interface Address {
-    String getStrasse();
+public interface Address extends BusinessObject {
+    String getStreet();
 
-    void setStrasse(String strasse);
+    void setStreet(String street);
 
-    String getHausnummer();
+    String getStreetNumber();
 
-    void setHausnummer(String hausnummer);
+    void setStreetNumber(String streetNumber);
 
-    String getPostleitzahl();
+    String getZipCode();
 
-    void setPostleitzahl(String postleitzahl);
+    void setZipCode(String zipCode);
 
-    String getStadt();
+    String getCity();
 
-    void setStadt(String stadt);
+    void setCity(String city);
 }

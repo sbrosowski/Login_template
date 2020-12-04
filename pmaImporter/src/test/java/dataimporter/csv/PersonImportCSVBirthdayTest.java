@@ -1,7 +1,8 @@
 package dataimporter.csv;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import pma.dataimporter.interfaces.PersonDataImporter;
 import pma.personendaten.beans.AddressCSV;
 import pma.personendaten.beans.PersonCSV;
@@ -13,8 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 
-
-
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PersonImportCSVBirthdayTest extends PersonImportCSVBase {
 
     List<PersonCSV> personCSVList;
@@ -35,7 +35,7 @@ public class PersonImportCSVBirthdayTest extends PersonImportCSVBase {
 
     }
 
-    @Before
+    @BeforeAll
     public void constructPersonData(){
         personCSVList=new ArrayList<>();
         Date birthdayDate=createDateObjet(1935,Calendar.MAY,9);

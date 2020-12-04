@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="pma">
+    <output-path>$PROJECT_DIR$/out/artifacts/pma</output-path>
+    <root id="archive" name="pma.war" />
+  </artifact>
+</component>

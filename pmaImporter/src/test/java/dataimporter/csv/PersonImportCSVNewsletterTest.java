@@ -1,16 +1,17 @@
 package dataimporter.csv;
 
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 import pma.dataimporter.interfaces.PersonDataImporter;
 
 
-public class PersonImportCSVNewsletterTest extends PersonImportCSVBase{
+public class PersonImportCSVNewsletterTest extends PersonImportCSVBase {
 
     private PersonDataImporter personDataImporter;
 
 
     @Test
-    public void PersonNewsletterNoTest(){
+    public void PersonNewsletterNoTest() {
 
     }
 

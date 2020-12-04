@@ -2,7 +2,7 @@ package pma.personendaten.interfaces;
 
 import java.util.Date;
 
-public interface Person {
+public interface Person extends BusinessObject {
 
     String getFirstName();
 
