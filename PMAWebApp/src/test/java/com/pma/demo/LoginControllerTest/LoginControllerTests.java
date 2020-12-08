@@ -1,18 +1,21 @@
 package com.pma.demo.LoginControllerTest;
 
 import com.google.gson.Gson;
-import com.pma.demo.Login.LoginController;
-import com.pma.demo.Login.LoginDTO;
+import com.pma.demo.Controller.LoginController;
+import com.pma.demo.Services.Impl.DTO.LoginDTO;
+import com.pma.demo.Services.Impl.DTO.UserRegistrationDTO;
+import com.pma.demo.Services.Interfaces.UserService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.http.MediaType;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 
+import static org.mockito.Mockito.when;
 import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -25,50 +28,72 @@ public class LoginControllerTests {
 
     @Autowired
     private MockMvc mockMvc;
+    @MockBean
+    private UserService service;
 
-    private String loginDtoString;
-    private String loginDtoResult;
+    private LoginDTO loginSuccessful;
+    private LoginDTO loginSuccessfulResult;
+    private UserRegistrationDTO userRegistrationSuccessful;
+
 
     @BeforeAll
     public void setUp() {
-        loginDtoString = setupLoginDto();
-        loginDtoResult = setupLoginFailedResult();
+        loginSuccessful = setupLoginSuccessful();
+        loginSuccessfulResult = setupLoginSuccessfulResult();
+        userRegistrationSuccessful = setupLoginRegistrationDTO();
     }
 
-    private String setupLoginDto() {
-        Gson g = new Gson();
+    private LoginDTO setupLoginSuccessful() {
         LoginDTO loginDTO = new LoginDTO();
-        loginDTO.setPassword("passwort123");
+        loginDTO.setPassword("admin");
         loginDTO.setUser("admin");
-        return g.toJson(loginDTO);
+        return loginDTO;
     }
 
-    private String setupLoginFailedResult() {
+    private LoginDTO setupLoginSuccessfulResult() {
+        return new LoginDTO(UserService.CREDENTIALS_CORRECT, true);
+    }
+
+    private UserRegistrationDTO setupLoginRegistrationDTO() {
+        UserRegistrationDTO userRegistrationDTO = new UserRegistrationDTO();
+        userRegistrationDTO.setEmail("test@test.com");
+        userRegistrationDTO.setFirstName("Max");
+        userRegistrationDTO.setLastName("Mustermann");
+        userRegistrationDTO.setUsername("admin");
+        userRegistrationDTO.setPassword("admin123");
+        return new UserRegistrationDTO();
+    }
+
+    @Test
+    public void shouldReturnMessageOnLogin() throws Exception {
         Gson g = new Gson();
-        LoginDTO loginDTO = new LoginDTO();
-        loginDTO.setResultMessage("Login Failed");
-        return g.toJson(loginDTO);
+
+        when(this.service.doLogin(g.toJson(loginSuccessful))).
+                thenReturn(g.toJson(loginSuccessfulResult));
+
+        this.mockMvc.perform(post("/login").
+                header(CONTENT_TYPE, APPLICATION_JSON_VALUE).
+                content(g.toJson(loginSuccessful)).
+                accept(APPLICATION_JSON)).
+                andExpect(status().isOk()).
+                andExpect(content().json(g.toJson(loginSuccessfulResult))).
+                andReturn();
     }
 
 
     @Test
-    public void doLogin() throws Exception {
+    public void shouldReturnMessageOnRegistration() throws Exception {
+        Gson g = new Gson();
 
-        MvcResult mvcResult = this.mockMvc.perform(post("/login").
+        when(this.service.doRegistration(g.toJson(userRegistrationSuccessful))).
+                thenReturn(g.toJson(loginSuccessfulResult));
+
+        this.mockMvc.perform(post("/login/register").
                 header(CONTENT_TYPE, APPLICATION_JSON_VALUE).
-                content(loginDtoString).
-                secure(false).
-                accept(MediaType.APPLICATION_JSON)).
+                content(g.toJson(userRegistrationSuccessful)).
+                accept(APPLICATION_JSON)).
                 andExpect(status().isOk()).
-                andExpect(content().json(loginDtoResult)).
+                andExpect(content().json(g.toJson(loginSuccessfulResult))).
                 andReturn();
-
-        mvcResult.toString();
-//       this.mockMvc.perform(asyncDispatch(mvcResult)).
-//               andExpect(status().isOk()).
-//               andExpect(header().string(CONTENT_TYPE, APPLICATION_JSON_VALUE)).
-//               andExpect(jsonPath("message").value("hello"));
-
     }
-
 }
