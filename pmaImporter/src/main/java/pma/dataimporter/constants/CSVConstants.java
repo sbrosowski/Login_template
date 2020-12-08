@@ -1,4 +1,4 @@
-package pma.personendaten.constants;
+package pma.dataimporter.constants;
 
 public interface CSVConstants {
 

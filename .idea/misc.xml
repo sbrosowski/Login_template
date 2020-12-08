@@ -49,7 +49,9 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/pmaEntities/pom.xml" />
         <option value="$PROJECT_DIR$/pmaUIAngularJS/pom.xml" />
+        <option value="$PROJECT_DIR$/untitled/pom.xml" />
       </set>
     </option>
   </component>

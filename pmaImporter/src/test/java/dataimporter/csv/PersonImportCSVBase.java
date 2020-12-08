@@ -1,9 +1,9 @@
 package dataimporter.csv;
 
 import org.junit.jupiter.api.Test;
+import pma.dataimporter.csvDTO.PersonCSV;
 import pma.dataimporter.factories.PersonDataImportFactory;
 import pma.dataimporter.interfaces.PersonDataImporter;
-import pma.personendaten.beans.PersonCSV;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

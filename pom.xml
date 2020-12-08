@@ -60,10 +60,11 @@
     </dependencies>
 
     <modules>
-        <module>pmaEntities</module>
         <module>pmaDao</module>
+        <module>Domain</module>
         <module>pmaImporter</module>
         <module>PMAWebApp</module>
+
     </modules>
 
 

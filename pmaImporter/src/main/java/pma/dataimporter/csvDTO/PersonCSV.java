@@ -1,9 +1,9 @@
-package pma.personendaten.beans;
+package pma.dataimporter.csvDTO;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvDate;
 import com.opencsv.bean.CsvRecurse;
-import pma.personendaten.constants.CSVConstants;
+import pma.dataimporter.constants.CSVConstants;
 
 import java.util.Date;
 

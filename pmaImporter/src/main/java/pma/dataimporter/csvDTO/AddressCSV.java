@@ -1,7 +1,7 @@
-package pma.personendaten.beans;
+package pma.dataimporter.csvDTO;
 
 import com.opencsv.bean.CsvBindByName;
-import pma.personendaten.constants.CSVConstants;
+import pma.dataimporter.constants.CSVConstants;
 
 public class AddressCSV {
 

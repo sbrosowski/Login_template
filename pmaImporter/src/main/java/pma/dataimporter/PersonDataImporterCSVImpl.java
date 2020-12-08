@@ -1,7 +1,7 @@
 package pma.dataimporter;
 
 import com.opencsv.bean.CsvToBeanBuilder;
-import pma.personendaten.beans.PersonCSV;
+import pma.dataimporter.csvDTO.PersonCSV;
 
 import java.io.FileReader;
 import java.util.List;

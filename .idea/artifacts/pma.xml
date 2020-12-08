@@ -1,6 +1,13 @@
 <component name="ArtifactManager">
   <artifact type="war" name="pma">
     <output-path>$PROJECT_DIR$/out/artifacts/pma</output-path>
-    <root id="archive" name="pma.war" />
+    <root id="archive" name="pma.war">
+      <element id="javaee-facet-resources" facet="PMAWebApp/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="PMAWebApp" />
+        </element>
+      </element>
+    </root>
   </artifact>
 </component>

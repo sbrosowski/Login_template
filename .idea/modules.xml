@@ -3,10 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AngularCli/AngularCli.iml" filepath="$PROJECT_DIR$/AngularCli/AngularCli.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Domain/Domain.iml" filepath="$PROJECT_DIR$/Domain/Domain.iml" />
       <module fileurl="file://$PROJECT_DIR$/PMA.iml" filepath="$PROJECT_DIR$/PMA.iml" />
       <module fileurl="file://$PROJECT_DIR$/PMAWebApp/PMAWebApp.iml" filepath="$PROJECT_DIR$/PMAWebApp/PMAWebApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/pmaDao/pmaDao.iml" filepath="$PROJECT_DIR$/pmaDao/pmaDao.iml" />
-      <module fileurl="file://$PROJECT_DIR$/pmaEntities/pmaEntities.iml" filepath="$PROJECT_DIR$/pmaEntities/pmaEntities.iml" />
       <module fileurl="file://$PROJECT_DIR$/pmaImporter/pmaImporter.iml" filepath="$PROJECT_DIR$/pmaImporter/pmaImporter.iml" />
     </modules>
   </component>

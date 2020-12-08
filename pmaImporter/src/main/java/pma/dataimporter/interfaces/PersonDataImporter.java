@@ -1,6 +1,6 @@
 package pma.dataimporter.interfaces;
 
-import pma.personendaten.beans.PersonCSV;
+import pma.dataimporter.csvDTO.PersonCSV;
 
 import java.util.List;
 
