@@ -1,7 +1,7 @@
 package com.pma.demo.Controller;
 
-import com.pma.demo.Services.Impl.DTO.LoginDTO;
-import com.pma.demo.Services.Interfaces.UserService;
+import com.pma.demo.services.Impl.DTO.LoginDTO;
+import com.pma.demo.services.Interfaces.UserService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 

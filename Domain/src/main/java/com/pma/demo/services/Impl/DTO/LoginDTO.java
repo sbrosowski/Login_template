@@ -1,4 +1,4 @@
-package com.pma.demo.Services.Impl.DTO;
+package com.pma.demo.services.Impl.DTO;
 
 public class LoginDTO {
     private String user;

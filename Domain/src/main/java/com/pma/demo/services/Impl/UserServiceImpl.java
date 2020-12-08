@@ -1,9 +1,9 @@
-package com.pma.demo.Services.Impl;
+package com.pma.demo.services.Impl;
 
 import com.google.gson.Gson;
-import com.pma.demo.Services.Impl.DTO.LoginDTO;
-import com.pma.demo.Services.Impl.DTO.UserRegistrationDTO;
-import com.pma.demo.Services.Interfaces.UserService;
+import com.pma.demo.services.Impl.DTO.LoginDTO;
+import com.pma.demo.services.Impl.DTO.UserRegistrationDTO;
+import com.pma.demo.services.Interfaces.UserService;
 import org.springframework.stereotype.Service;
 
 

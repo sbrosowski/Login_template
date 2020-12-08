@@ -2,9 +2,9 @@ package com.pma.demo.LoginControllerTest;
 
 import com.google.gson.Gson;
 import com.pma.demo.Controller.LoginController;
-import com.pma.demo.Services.Impl.DTO.LoginDTO;
-import com.pma.demo.Services.Impl.DTO.UserRegistrationDTO;
-import com.pma.demo.Services.Interfaces.UserService;
+import com.pma.demo.services.Impl.DTO.LoginDTO;
+import com.pma.demo.services.Impl.DTO.UserRegistrationDTO;
+import com.pma.demo.services.Interfaces.UserService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
