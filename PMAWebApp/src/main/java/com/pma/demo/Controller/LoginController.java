@@ -26,7 +26,7 @@ public class LoginController {
         return null;
     }
 
-    @PostMapping(value = "/login/register", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     String register(@RequestBody String registrationInformation) {
         return userService.doRegistration(registrationInformation);

@@ -2,7 +2,7 @@ package com.pma.demo.services.Impl.DTO;
 
 public class UserRegistrationDTO {
     String firstName;
-    String lastName;
+    String surname;
     String username;
     String password;
     String email;
@@ -15,12 +15,12 @@ public class UserRegistrationDTO {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public String getUsername() {
@@ -63,8 +63,8 @@ public class UserRegistrationDTO {
     private boolean isEqual(UserRegistrationDTO o) {
         return this.password.equals(o.getPassword()) &&
                 this.firstName.equals(o.getFirstName()) &&
-                this.lastName.equals(o.getLastName()) &&
-                this.email == o.getEmail() &&
-                this.username == o.getUsername();
+                this.surname.equals(o.getSurname()) &&
+                this.email.equals(o.getEmail()) &&
+                this.username.equals(o.getUsername());
     }
 }

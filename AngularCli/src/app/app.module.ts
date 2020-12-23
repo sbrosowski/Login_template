@@ -7,15 +7,17 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSliderModule} from '@angular/material/slider';
 import {FormsModule} from '@angular/forms';
 import {LoginComponent} from './Components/Login/login.component';
-import {LoginService} from './_service/Login/login.service';
+import {UserService} from './_service/Login/user.service';
 import {HttpClientModule} from '@angular/common/http';
 import {AuthGuard} from './_guard/auth.guard';
+import {RegistrationComponent} from './Components/registration/registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,10 @@ import {AuthGuard} from './_guard/auth.guard';
         component: LoginComponent
       },
       {
+        path: 'Register',
+        component: RegistrationComponent
+      },
+      {
         path: '',
         redirectTo: '/Login',
         pathMatch: 'full'
@@ -41,7 +47,7 @@ import {AuthGuard} from './_guard/auth.guard';
 
     ])
   ],
-  providers: [LoginService, AuthGuard],
+  providers: [UserService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

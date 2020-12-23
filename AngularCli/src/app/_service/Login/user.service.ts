@@ -4,11 +4,13 @@ import {ILoginResult} from '../../ServiceObjects/Interfaces/ILoginResult';
 import {ILogin} from '../../ServiceObjects/Interfaces/ILogin';
 import {Observable} from 'rxjs';
 import {Service} from '../AbstractService';
+import {IRegistration} from '../../ServiceObjects/Interfaces/IRegistration';
 
 
 @Injectable()
-export class LoginService extends Service {
+export class UserService extends Service {
 
+  // tslint:disable-next-line:variable-name
   private _isAuthenticated = false;
 
   constructor(private http: HttpClient) {
@@ -19,6 +21,12 @@ export class LoginService extends Service {
 
     return this.http.post<ILoginResult>(this.getUrl() + '/login', {
       login
+    });
+  }
+
+  registration(registration: IRegistration): Observable<ILoginResult> {
+    return this.http.post<ILoginResult>(this.getUrl() + '/register', {
+      registration
     });
   }
 

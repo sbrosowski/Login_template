@@ -27,7 +27,7 @@ public class UserServiceTests {
         UserRegistrationDTO userRegistrationDTO = new UserRegistrationDTO();
         userRegistrationDTO.setEmail("test@test.com");
         userRegistrationDTO.setFirstName("Max");
-        userRegistrationDTO.setLastName("Mustermann");
+        userRegistrationDTO.setSurname("Mustermann");
         userRegistrationDTO.setUsername("admin");
         userRegistrationDTO.setPassword("admin123");
         return new UserRegistrationDTO();
