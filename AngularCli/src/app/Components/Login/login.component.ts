@@ -1,39 +1,45 @@
-import {Component, OnInit} from '@angular/core';
-import {LoginImpl} from '../../DTOs/implementation/LoginImpl';
+import {Component} from '@angular/core';
 import {LoginService} from '../../_service/Login/login.service';
+import {Login} from '../../ServiceObjects/Login';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-component',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-
-  private username = '';
-  private password = '';
-  private loginService: LoginService;
+export class LoginComponent {
   title = 'AngularCli';
 
-  constructor(loginService: LoginService) {
+  constructor(private loginService: LoginService,
+              private  router: Router) {
 
   }
 
-  ngOnInit(): void {
-  }
-
-  // tslint:disable-next-line:typedef
-
-  login(): void {
-
+  login(event): void {
+    event.preventDefault();
+    console.log(event);
+    const target = event.target;
     let login;
     let loginResult;
-    login = new LoginImpl();
-    login.password = this.password;
-    login.user = this.username;
-    loginResult = this.loginService.login(login);
+    login = new Login();
 
-    console.log('Hello ' + this.username);
-    console.log('Password ' + this.password);
+    login.password = target.querySelector('#password').value;
+    login.user = target.querySelector('#username').value;
+
+    loginResult = this.loginService.login(login).subscribe(data => {
+      console.log(data);
+      if (data.successful) {
+        this.router.navigate(['/Home']);
+        this.loginService.isAuthenticated = true;
+        window.alert('valid');
+      } else {
+        this.loginService.isAuthenticated = false;
+        window.alert('invalid');
+      }
+    });
+    console.log(loginResult);
+
   }
 
 }

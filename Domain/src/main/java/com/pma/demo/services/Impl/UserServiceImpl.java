@@ -1,10 +1,14 @@
 package com.pma.demo.services.Impl;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.pma.demo.services.Impl.DTO.LoginDTO;
 import com.pma.demo.services.Impl.DTO.UserRegistrationDTO;
 import com.pma.demo.services.Interfaces.UserService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 
 @Service
@@ -14,9 +18,10 @@ class UserServiceImpl implements UserService {
     public String doLogin(String loginDTO) {
         Gson request = new Gson();
         Gson gsonResult = new Gson();
-        LoginDTO loginDTORequest = request.fromJson(loginDTO, LoginDTO.class);
 
-        LoginDTO loginDTOResult = containsCredentials(loginDTORequest);
+        LoginDTO loginData = request.fromJson(getLoginJSON(loginDTO), LoginDTO.class);
+
+        LoginDTO loginDTOResult = containsCredentials(loginData);
 
         if (!loginDTOResult.isSuccessful() && loginDTOResult.getResultMessage().equals(CREDENTIALS_WRONG)) {
             return gsonResult.toJson(loginDTOResult);
@@ -37,10 +42,18 @@ class UserServiceImpl implements UserService {
 
     private LoginDTO containsCredentials(LoginDTO loginDTO) {
 
-        if (loginDTO.getUser() == null || loginDTO.getPassword() == null) {
+
+        if (!StringUtils.hasText(loginDTO.getUser()) || !StringUtils.hasText(loginDTO.getPassword())) {
             return new LoginDTO(CREDENTIALS_WRONG, false);
         }
 
         return loginDTO;
+    }
+
+    private String getLoginJSON(String loginJson) {
+        JsonElement elements = JsonParser.parseString(loginJson);
+        JsonObject object = elements.getAsJsonObject();
+        JsonElement loginElement = object.get("login");
+        return loginElement.toString();
     }
 }

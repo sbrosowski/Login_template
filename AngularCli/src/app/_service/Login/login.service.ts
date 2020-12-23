@@ -1,23 +1,33 @@
 import {Injectable} from '@angular/core';
-import {LoginResultImpl} from '../../DTOs/implementation/LoginResultImpl';
+import {HttpClient} from '@angular/common/http';
+import {ILoginResult} from '../../ServiceObjects/Interfaces/ILoginResult';
+import {ILogin} from '../../ServiceObjects/Interfaces/ILogin';
+import {Observable} from 'rxjs';
+import {Service} from '../AbstractService';
 
 
-@Injectable({
-  providedIn: 'root'
-})
-export class LoginService {
+@Injectable()
+export class LoginService extends Service {
 
+  private _isAuthenticated = false;
 
-  constructor() {
+  constructor(private http: HttpClient) {
+    super();
   }
 
-  login(login: Login): LoginResult {
+  login(login: ILogin): Observable<ILoginResult> {
 
-    let username;
-    let password;
+    return this.http.post<ILoginResult>(this.getUrl() + '/login', {
+      login
+    });
+  }
 
-    username = login.username;
-    password = login.password;
-    return new LoginResultImpl();
+
+  get isAuthenticated(): boolean {
+    return this._isAuthenticated;
+  }
+
+  set isAuthenticated(value: boolean) {
+    this._isAuthenticated = value;
   }
 }

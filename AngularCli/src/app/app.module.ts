@@ -7,6 +7,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSliderModule} from '@angular/material/slider';
 import {FormsModule} from '@angular/forms';
 import {LoginComponent} from './Components/Login/login.component';
+import {LoginService} from './_service/Login/login.service';
+import {HttpClientModule} from '@angular/common/http';
+import {AuthGuard} from './_guard/auth.guard';
 
 @NgModule({
   declarations: [
@@ -19,10 +22,12 @@ import {LoginComponent} from './Components/Login/login.component';
     BrowserAnimationsModule,
     MatSliderModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {
         path: 'Home',
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'Login',
@@ -36,7 +41,7 @@ import {LoginComponent} from './Components/Login/login.component';
 
     ])
   ],
-  providers: [],
+  providers: [LoginService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

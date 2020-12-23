@@ -15,7 +15,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = ServicesConfig.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -52,6 +51,32 @@ public class UserServiceTests {
     public void shouldFailLoginByPassword() {
 
         LoginDTO incoming = new LoginDTO("admin", null);
+        String resultJson = userService.doLogin(new Gson().toJson(incoming));
+
+        LoginDTO parsedDTO = new Gson().fromJson(resultJson, LoginDTO.class);
+        assertEquals(UserService.CREDENTIALS_WRONG, parsedDTO.getResultMessage());
+        assertFalse(parsedDTO.isSuccessful());
+        assertNull(parsedDTO.getUser());
+        assertNull(parsedDTO.getPassword());
+    }
+
+    @Test
+    public void shouldFailLoginByEmptyPassword() {
+
+        LoginDTO incoming = new LoginDTO("admin", "");
+        String resultJson = userService.doLogin(new Gson().toJson(incoming));
+
+        LoginDTO parsedDTO = new Gson().fromJson(resultJson, LoginDTO.class);
+        assertEquals(UserService.CREDENTIALS_WRONG, parsedDTO.getResultMessage());
+        assertFalse(parsedDTO.isSuccessful());
+        assertNull(parsedDTO.getUser());
+        assertNull(parsedDTO.getPassword());
+    }
+
+    @Test
+    public void shouldFailLoginByEmptyLogin() {
+
+        LoginDTO incoming = new LoginDTO("", "123455");
         String resultJson = userService.doLogin(new Gson().toJson(incoming));
 
         LoginDTO parsedDTO = new Gson().fromJson(resultJson, LoginDTO.class);
