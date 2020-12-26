@@ -7,6 +7,7 @@ import com.google.gson.JsonParser;
 import com.pma.demo.services.Impl.DTO.LoginDTO;
 import com.pma.demo.services.Impl.DTO.UserRegistrationDTO;
 import com.pma.demo.services.Interfaces.UserService;
+import com.pma.demo.services.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -19,7 +20,7 @@ class UserServiceImpl implements UserService {
         Gson request = new Gson();
         Gson gsonResult = new Gson();
 
-        LoginDTO loginData = request.fromJson(getLoginJSON(loginDTO), LoginDTO.class);
+        LoginDTO loginData = request.fromJson(getJsonContent(loginDTO, "login"), LoginDTO.class);
 
         LoginDTO loginDTOResult = containsCredentials(loginData);
 
@@ -35,13 +36,18 @@ class UserServiceImpl implements UserService {
         Gson request = new Gson();
         Gson gsonResult = new Gson();
 
-        UserRegistrationDTO userRegistration = request.fromJson(registrationInformation, UserRegistrationDTO.class);
+        //TODO Inputvalidierung fehlt.
+        UserRegistrationDTO userRegistration = request.fromJson(getJsonContent(registrationInformation,
+                "registration"), UserRegistrationDTO.class);
+
+        String encodedPassword = PasswordEncoder.encode(userRegistration.getPassword());
+
+
         return gsonResult.toJson(new LoginDTO(CREDENTIALS_CORRECT, true));
     }
 
 
     private LoginDTO containsCredentials(LoginDTO loginDTO) {
-
 
         if (!StringUtils.hasText(loginDTO.getUser()) || !StringUtils.hasText(loginDTO.getPassword())) {
             return new LoginDTO(CREDENTIALS_WRONG, false);
@@ -50,10 +56,12 @@ class UserServiceImpl implements UserService {
         return loginDTO;
     }
 
-    private String getLoginJSON(String loginJson) {
+    private String getJsonContent(String loginJson, String wrappingJsonKey) {
         JsonElement elements = JsonParser.parseString(loginJson);
         JsonObject object = elements.getAsJsonObject();
-        JsonElement loginElement = object.get("login");
+        JsonElement loginElement = object.get(wrappingJsonKey);
         return loginElement.toString();
     }
+
+
 }

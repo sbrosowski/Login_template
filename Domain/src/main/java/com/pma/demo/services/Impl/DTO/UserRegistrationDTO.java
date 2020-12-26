@@ -5,6 +5,7 @@ public class UserRegistrationDTO {
     String surname;
     String username;
     String password;
+    String passwordConfirmation;
     String email;
 
     public String getFirstName() {
@@ -47,6 +48,14 @@ public class UserRegistrationDTO {
         this.email = email;
     }
 
+    public String getPasswordConfirmation() {
+        return passwordConfirmation;
+    }
+
+    public void setPasswordConfirmation(String passwordConfirmation) {
+        this.passwordConfirmation = passwordConfirmation;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null) {
@@ -65,6 +74,7 @@ public class UserRegistrationDTO {
                 this.firstName.equals(o.getFirstName()) &&
                 this.surname.equals(o.getSurname()) &&
                 this.email.equals(o.getEmail()) &&
-                this.username.equals(o.getUsername());
+                this.username.equals(o.getUsername()) &&
+                this.passwordConfirmation.equals(o.getPasswordConfirmation());
     }
 }

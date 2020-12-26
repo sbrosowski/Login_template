@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(LoginController.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class LoginControllerTests {
+public class LoginControllerRegistrationTests {
 
     @Autowired
     private MockMvc mockMvc;
@@ -38,17 +38,10 @@ public class LoginControllerTests {
 
     @BeforeAll
     public void setUp() {
-        loginSuccessful = setupLoginSuccessful();
         loginSuccessfulResult = setupLoginSuccessfulResult();
         userRegistrationSuccessful = setupLoginRegistrationDTO();
     }
 
-    private LoginDTO setupLoginSuccessful() {
-        LoginDTO loginDTO = new LoginDTO();
-        loginDTO.setPassword("admin");
-        loginDTO.setUser("admin");
-        return loginDTO;
-    }
 
     private LoginDTO setupLoginSuccessfulResult() {
         return new LoginDTO(UserService.CREDENTIALS_CORRECT, true);
@@ -65,30 +58,13 @@ public class LoginControllerTests {
     }
 
     @Test
-    public void shouldReturnMessageOnLogin() throws Exception {
-        Gson g = new Gson();
-
-        when(this.service.doLogin(g.toJson(loginSuccessful))).
-                thenReturn(g.toJson(loginSuccessfulResult));
-
-        this.mockMvc.perform(post("/login").
-                header(CONTENT_TYPE, APPLICATION_JSON_VALUE).
-                content(g.toJson(loginSuccessful)).
-                accept(APPLICATION_JSON)).
-                andExpect(status().isOk()).
-                andExpect(content().json(g.toJson(loginSuccessfulResult))).
-                andReturn();
-    }
-
-
-    @Test
     public void shouldReturnMessageOnRegistration() throws Exception {
         Gson g = new Gson();
 
         when(this.service.doRegistration(g.toJson(userRegistrationSuccessful))).
                 thenReturn(g.toJson(loginSuccessfulResult));
 
-        this.mockMvc.perform(post("/login/register").
+        this.mockMvc.perform(post("/register").
                 header(CONTENT_TYPE, APPLICATION_JSON_VALUE).
                 content(g.toJson(userRegistrationSuccessful)).
                 accept(APPLICATION_JSON)).
