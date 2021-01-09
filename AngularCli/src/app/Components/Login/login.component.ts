@@ -38,7 +38,7 @@ export class LoginComponent {
 
   private createLogin(target): ILogin {
     const login = new Login();
-    login.password = target.querySelector('#password').value;
+    login.password = target.querySelector('#com.pma.password').value;
     login.username = target.querySelector('#username').value;
     return login;
   }

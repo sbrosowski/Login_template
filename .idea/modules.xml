@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AngularCli/AngularCli.iml" filepath="$PROJECT_DIR$/AngularCli/AngularCli.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ConfigurationsModule/ConfigurationsModule.iml" filepath="$PROJECT_DIR$/ConfigurationsModule/ConfigurationsModule.iml" />
       <module fileurl="file://$PROJECT_DIR$/Domain/Domain.iml" filepath="$PROJECT_DIR$/Domain/Domain.iml" />
       <module fileurl="file://$PROJECT_DIR$/PMA.iml" filepath="$PROJECT_DIR$/PMA.iml" />
       <module fileurl="file://$PROJECT_DIR$/PMAWebApp/PMAWebApp.iml" filepath="$PROJECT_DIR$/PMAWebApp/PMAWebApp.iml" />

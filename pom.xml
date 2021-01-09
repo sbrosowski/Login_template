@@ -62,9 +62,9 @@
     <modules>
         <module>pmaDao</module>
         <module>Domain</module>
+        <module>ConfigurationsModule</module>
         <module>pmaImporter</module>
         <module>PMAWebApp</module>
-
     </modules>
 
 

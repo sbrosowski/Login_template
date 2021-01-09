@@ -37,7 +37,7 @@ export class RegistrationComponent implements OnInit {
     register.surname = target.querySelector('#surname').value;
     register.username = target.querySelector('#username').value;
     register.email = target.querySelector('#email').value;
-    register.password = target.querySelector('#password').value;
+    register.password = target.querySelector('#com.pma.password').value;
     register.passwordConfirmation = target.querySelector('#passwordConfirmation').value;
     return register;
   }
