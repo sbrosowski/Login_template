@@ -58,6 +58,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-core:5.3.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.3.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.3.1" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.persistence:jakarta.persistence-api:3.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-all:1.10.19" level="project" />
   </component>
 </module>

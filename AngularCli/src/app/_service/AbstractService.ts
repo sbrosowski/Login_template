@@ -1,6 +1,8 @@
+import {environment} from './../../environments/environment';
+
 export abstract class Service {
 
   getUrl(): string {
-    return 'http://localhost:8080';
+    return environment.apiUrl;
   }
 }

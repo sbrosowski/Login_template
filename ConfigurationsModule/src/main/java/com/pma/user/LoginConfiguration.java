@@ -1,13 +1,12 @@
 package com.pma.user;
 
-import com.pma.DataSourceConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 
 @Configuration
-class LoginConfiguration extends DataSourceConfig {
+public class LoginConfiguration {
 
     @Bean
     UserService userService(UserRepository userRepository) {
@@ -17,6 +16,6 @@ class LoginConfiguration extends DataSourceConfig {
     @Bean
     @Profile({"default", "jdbc"})
     UserRepository userRepository() {
-        return new UserRepositoryJdbc();
+        return new UserRepositoryImpl();
     }
 }

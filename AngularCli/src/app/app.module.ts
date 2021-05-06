@@ -8,7 +8,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import {FormsModule} from '@angular/forms';
 import {LoginComponent} from './Components/Login/login.component';
 import {UserService} from './_service/Login/user.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
 import {AuthGuard} from './_guard/auth.guard';
 import {RegistrationComponent} from './Components/registration/registration.component';
 
@@ -25,26 +25,29 @@ import {RegistrationComponent} from './Components/registration/registration.comp
     MatSliderModule,
     FormsModule,
     HttpClientModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'XSRF-TOKEN',
+      headerName: 'X-CSRF-TOKEN'
+    }),
     RouterModule.forRoot([
       {
-        path: 'Home',
+        path: 'home',
         component: HomeComponent,
         canActivate: [AuthGuard]
       },
       {
-        path: 'Login',
+        path: 'login',
         component: LoginComponent
       },
       {
-        path: 'Register',
+        path: 'register',
         component: RegistrationComponent
       },
       {
         path: '',
-        redirectTo: '/Login',
+        redirectTo: '/login',
         pathMatch: 'full'
       }
-
     ])
   ],
   providers: [UserService, AuthGuard],

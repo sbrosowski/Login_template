@@ -1,5 +1,7 @@
 package com.pma.Interfaces.entities;
 
+import java.util.Date;
+
 public interface ILoginEntity {
 
     String getUsername();
@@ -15,6 +17,16 @@ public interface ILoginEntity {
     void resetLoginTry();
 
     boolean isLimitReached();
+
+    boolean isDeleted();
+
+    Date getDeleteTimeStamp();
+
+    Date getLastModifiedTimeStamp();
+
+    Date setDeleteTimeStamp(Date deletedTimeStamp);
+
+    Date setLastModifiedTimeStamp(Date lastModifiedTimeStamp);
 
 
 }

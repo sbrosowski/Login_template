@@ -10,7 +10,6 @@ import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.Mockito.when;
@@ -23,13 +22,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @WebMvcTest(LoginController.class)
-@ContextConfiguration
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class LoginControllerLoginTests {
-
-
     @Autowired
     private MockMvc mockMvc;
+
     @MockBean
     private UserService service;
 
@@ -82,3 +79,6 @@ public class LoginControllerLoginTests {
                 andReturn();
     }
 }
+
+
+

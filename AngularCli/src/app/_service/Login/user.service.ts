@@ -19,7 +19,7 @@ export class UserService extends Service {
 
   login(login: ILogin): Observable<ILoginResult> {
 
-    return this.http.post<ILoginResult>(this.getUrl() + '/login', {
+    return this.http.post<ILoginResult>(this.getUrl() + '/authenticate', {
       login
     });
   }

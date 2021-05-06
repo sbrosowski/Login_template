@@ -8,8 +8,10 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "person", schema = "pma")
-public class PersonEntity implements IPersonenEntity {
-    private int id;
+@NamedQuery(name = "User.findByTheUsersName", query = "from User u where u.username = ?1")
+public class PersonEntity extends AbstractPersistable<Long> implements IPersonenEntity {
+
+
     private String firstName;
     private String lastName;
     private String salutation;
@@ -19,16 +21,6 @@ public class PersonEntity implements IPersonenEntity {
     private String phoneNumber;
     private String mobile;
     private String email;
-
-    @Id
-    @Column(name = "ID")
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @Basic
     @Column(name = "firstName")
@@ -127,7 +119,7 @@ public class PersonEntity implements IPersonenEntity {
 
         PersonEntity that = (PersonEntity) o;
 
-        if (id != that.id) return false;
+        if (getId() != that.getId()) return false;
         if (!Objects.equals(firstName, that.firstName)) return false;
         if (!Objects.equals(lastName, that.lastName)) return false;
         if (!Objects.equals(salutation, that.salutation)) return false;
@@ -141,7 +133,7 @@ public class PersonEntity implements IPersonenEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = getId().intValue();
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (salutation != null ? salutation.hashCode() : 0);

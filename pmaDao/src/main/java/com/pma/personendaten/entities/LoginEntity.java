@@ -2,14 +2,17 @@ package com.pma.personendaten.entities;
 
 import com.pma.Interfaces.entities.ILoginEntity;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
 @Table(name = "login", schema = "pma")
-public class LoginEntity implements ILoginEntity {
+public class LoginEntity extends AbstractPersistable<Long> implements ILoginEntity {
 
-    @Id
     @Column(name = "username")
     private String username;
     @Basic
@@ -20,6 +23,12 @@ public class LoginEntity implements ILoginEntity {
     @Column(name = "loginTry")
     private int loginTry;
 
+    @Column(name = "lastModified", nullable = false)
+    private Date lastModified;
+
+
+    @Column(name = "deletedTimeStamp", nullable = true)
+    private Date deletedTimestamp;
 
     public String getUsername() {
         return username;
@@ -55,6 +64,30 @@ public class LoginEntity implements ILoginEntity {
         return loginTry >= 3;
     }
 
+    @Override
+    public boolean isDeleted() {
+        return false;
+    }
+
+    @Override
+    public Date getDeleteTimeStamp() {
+        return deletedTimestamp;
+    }
+
+    @Override
+    public Date getLastModifiedTimeStamp() {
+        return lastModified;
+    }
+
+    @Override
+    public Date setDeleteTimeStamp(Date deletedTimeStamp) {
+        return this.deletedTimestamp = deletedTimeStamp;
+    }
+
+    @Override
+    public Date setLastModifiedTimeStamp(Date lastModifiedTimeStamp) {
+        return this.lastModified = lastModifiedTimeStamp;
+    }
 
     public int getLoginTry() {
         return loginTry;
