@@ -1,9 +1,12 @@
 package com.pma.user;
 
 import com.pma.Interfaces.entities.ILoginEntity;
+import com.pma.persistence.model.entities.Login;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -15,21 +18,24 @@ class UserRepositoryImpl implements UserRepository {
     @PersistenceContext
     private EntityManager em;
 
-    public void setEntityManager(EntityManager em) {
-        this.em = em;
-    }
-
-
     @Override
     public Optional<ILoginEntity> findByUsername(String username) {
-        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-        CriteriaQuery<ILoginEntity> query = criteriaBuilder.createQuery(ILoginEntity.class);
+        Login loginEntity = null;
+        try {
 
-        Root<ILoginEntity> entity = query.from(ILoginEntity.class);
-        query.select(entity);
-        query.where(criteriaBuilder.equal(entity.get("username"), username));
+            CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+            CriteriaQuery<Login> criteriaQuery = criteriaBuilder.createQuery(Login.class);
 
-        ILoginEntity loginEntity = em.createQuery(query).getSingleResult();
+            Root<Login> root = criteriaQuery.from(Login.class);
+            criteriaQuery.select(root);
+            criteriaQuery.where(criteriaBuilder.like(root.get("username"), username));
+
+            TypedQuery<Login> query = em.createQuery(criteriaQuery);
+            loginEntity = query.getSingleResult();
+        } catch (PersistenceException ex) {
+            System.out.println(ex.getMessage());
+        }
+
 
         return Optional.ofNullable(loginEntity);
 

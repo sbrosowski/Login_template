@@ -1,29 +1,32 @@
-package com.pma.personendaten.entities;
+package com.pma.persistence.model.entities;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Objects;
 
 @Entity
 @Table(name = "address", schema = "pma")
-public class AddressEntity {
-    private int id;
-    private String street;
-    private int streetNumber;
-    private int zipcode;
-    private String city;
-
-    @Id
-    @Column(name = "ID")
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+public class Address extends AbstractPersistable<Long> {
 
     @Basic
     @Column(name = "street")
+    private String street;
+
+    @Basic
+    @Column(name = "streetNumber")
+    private int streetNumber;
+
+    @Basic
+    @Column(name = "zipcode")
+    private int zipcode;
+
+    @Basic
+    @Column(name = "city")
+    private String city;
+
+
     public String getStreet() {
         return street;
     }
@@ -32,8 +35,7 @@ public class AddressEntity {
         this.street = street;
     }
 
-    @Basic
-    @Column(name = "streetNumber")
+
     public int getStreetNumber() {
         return streetNumber;
     }
@@ -42,8 +44,7 @@ public class AddressEntity {
         this.streetNumber = streetNumber;
     }
 
-    @Basic
-    @Column(name = "zipcode")
+
     public int getZipcode() {
         return zipcode;
     }
@@ -52,8 +53,7 @@ public class AddressEntity {
         this.zipcode = zipcode;
     }
 
-    @Basic
-    @Column(name = "city")
+
     public String getCity() {
         return city;
     }
@@ -67,9 +67,9 @@ public class AddressEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AddressEntity that = (AddressEntity) o;
+        Address that = (Address) o;
 
-        if (id != that.id) return false;
+        if (this.getId() != that.getId()) return false;
         if (streetNumber != that.streetNumber) return false;
         if (zipcode != that.zipcode) return false;
         if (!Objects.equals(street, that.street)) return false;
@@ -78,7 +78,7 @@ public class AddressEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = this.getId().intValue();
         result = 31 * result + (street != null ? street.hashCode() : 0);
         result = 31 * result + streetNumber;
         result = 31 * result + zipcode;

@@ -1,4 +1,4 @@
-package com.pma.personendaten.entities;
+package com.pma.persistence.model.entities;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;

@@ -1,4 +1,4 @@
-package com.pma.model;
+package com.pma.persistence.model;
 
 public class AuthenticationJwtTokenResponse {
 

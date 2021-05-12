@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {UserService} from '../../_service/Login/user.service';
-import {Login} from '../../ServiceObjects/Login';
 import {Router} from '@angular/router';
-import {ILogin} from '../../ServiceObjects/Interfaces/ILogin';
+import {IAuthenticationDetails} from '../../ServiceObjects/Interfaces/IAuthenticationDetails';
+import {AuthenticationDetails} from 'src/app/ServiceObjects/AuthenticationDetails';
 
 @Component({
   selector: 'app-login-component',
@@ -33,14 +33,13 @@ export class LoginComponent {
         this.serviceToLogin.isAuthenticated = false;
       }
     });
-
   }
 
-  private createLogin(target): ILogin {
-    const login = new Login();
-    login.password = target.querySelector('#password').value;
-    login.username = target.querySelector('#username').value;
-    return login;
+  private createLogin(target): IAuthenticationDetails {
+    const authenticationDetails = new AuthenticationDetails();
+    authenticationDetails.password = target.querySelector('#password').value;
+    authenticationDetails.username = target.querySelector('#username').value;
+    return authenticationDetails;
   }
 
   redirectToRegistration(): void {

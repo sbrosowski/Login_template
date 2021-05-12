@@ -3,7 +3,7 @@ package com.pma;
 
 import com.pma.filters.AuthenticationFilterChain;
 import com.pma.password.PasswordEncoderImpl;
-import com.pma.user.UserService;
+import com.pma.user.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -25,14 +25,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userDetailsService;
 
-    public WebSecurityConfig(UserService userService) {
-        userDetailsService = new UserDetailsServiceImpl(userService);
+    public WebSecurityConfig(UserRepository userRepository) {
+        userDetailsService = new UserDetailsServiceImpl(userRepository);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http.csrf().and().authorizeRequests().antMatchers(HttpMethod.OPTIONS,"/**").
-//                permitAll().anyRequest().authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         http
                 .cors().and()
@@ -72,21 +70,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
-
-
-//    @Bean
-//    public WebMvcConfigurer corsConfigurer() {
-//        return new WebMvcConfigurer() {
-//            @Override
-//            public void addCorsMappings(CorsRegistry registry) {
-//                registry.addMapping("/**").allowedOrigins("http://localhost:4200").allowedMethods("GET", "POST", "OPTIONS", "PUT")
-//                        .allowedHeaders("Content-Type", "X-Requested-With", "accept", "Origin", "Access-Control-Request-Method",
-//                                "Access-Control-Request-Headers")
-//                        .exposedHeaders("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials")
-//                        .allowCredentials(true).maxAge(3600);
-//            }
-//        };
-//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

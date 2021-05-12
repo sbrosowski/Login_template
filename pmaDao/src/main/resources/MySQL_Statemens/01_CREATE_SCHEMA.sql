@@ -39,24 +39,17 @@ create index PERSON_INDEX ON PERSON (ID);
 
 create table Login
 (
-    username varchar(255) not null, com
-    .
-    pma
-    .
-    password
-    varchar
-(
-    255
-) not null,
-    loginTry int not Null,
-    personID int not null,
-    primary key (username),
+    ID       int          not null,
+    username varchar(255) not null,
+    password varchar(255) not null,
+    loginTry int          not Null,
+    personID int          not null,
+    primary key (id),
     foreign key (personID) references Person (ID)
 
-    );
+);
 
-
-create index LOGIN_INDEX on Login (username);
+create index LOGIN_INDEX on Login (ID);
 
 
 

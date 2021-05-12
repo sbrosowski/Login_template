@@ -1,4 +1,4 @@
-package com.pma.personendaten.entities;
+package com.pma.persistence.model.entities;
 
 import com.pma.Interfaces.entities.IPersonenEntity;
 
@@ -8,22 +8,51 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "person", schema = "pma")
-@NamedQuery(name = "User.findByTheUsersName", query = "from User u where u.username = ?1")
-public class PersonEntity extends AbstractPersistable<Long> implements IPersonenEntity {
+public class Person extends AbstractPersistable<Long> implements IPersonenEntity {
 
-
-    private String firstName;
-    private String lastName;
-    private String salutation;
-    private String title;
-    private Date dateOfBirth;
-    private Date entryDate;
-    private String phoneNumber;
-    private String mobile;
-    private String email;
 
     @Basic
     @Column(name = "firstName")
+    private String firstName;
+
+    @Basic
+    @Column(name = "lastName")
+    private String lastName;
+
+    @Basic
+    @Column(name = "salutation")
+    private String salutation;
+
+    @Basic
+    @Column(name = "title")
+    private String title;
+
+    @Basic
+    @Column(name = "dateOfBirth")
+    private Date dateOfBirth;
+
+
+    @Basic
+    @Column(name = "entryDate")
+    private Date entryDate;
+
+    @Basic
+    @Column(name = "phoneNumber")
+    private String phoneNumber;
+
+    @Basic
+    @Column(name = "mobile")
+    private String mobile;
+
+    @Basic
+    @Column(name = "email")
+    private String email;
+
+    @ManyToOne
+    @JoinColumn(name = "addressID")
+    private Address address;
+
+
     public String getFirstName() {
         return firstName;
     }
@@ -32,8 +61,7 @@ public class PersonEntity extends AbstractPersistable<Long> implements IPersonen
         this.firstName = firstName;
     }
 
-    @Basic
-    @Column(name = "lastName")
+
     public String getLastName() {
         return lastName;
     }
@@ -42,8 +70,7 @@ public class PersonEntity extends AbstractPersistable<Long> implements IPersonen
         this.lastName = lastName;
     }
 
-    @Basic
-    @Column(name = "salutation")
+
     public String getSalutation() {
         return salutation;
     }
@@ -52,8 +79,7 @@ public class PersonEntity extends AbstractPersistable<Long> implements IPersonen
         this.salutation = salutation;
     }
 
-    @Basic
-    @Column(name = "title")
+
     public String getTitle() {
         return title;
     }
@@ -62,8 +88,7 @@ public class PersonEntity extends AbstractPersistable<Long> implements IPersonen
         this.title = title;
     }
 
-    @Basic
-    @Column(name = "dateOfBirth")
+
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
@@ -72,8 +97,7 @@ public class PersonEntity extends AbstractPersistable<Long> implements IPersonen
         this.dateOfBirth = dateOfBirth;
     }
 
-    @Basic
-    @Column(name = "entryDate")
+
     public Date getEntryDate() {
         return entryDate;
     }
@@ -82,8 +106,7 @@ public class PersonEntity extends AbstractPersistable<Long> implements IPersonen
         this.entryDate = entryDate;
     }
 
-    @Basic
-    @Column(name = "phoneNumber")
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -92,8 +115,7 @@ public class PersonEntity extends AbstractPersistable<Long> implements IPersonen
         this.phoneNumber = phoneNumber;
     }
 
-    @Basic
-    @Column(name = "mobile")
+
     public String getMobile() {
         return mobile;
     }
@@ -102,8 +124,7 @@ public class PersonEntity extends AbstractPersistable<Long> implements IPersonen
         this.mobile = mobile;
     }
 
-    @Basic
-    @Column(name = "email")
+
     public String getEmail() {
         return email;
     }
@@ -117,7 +138,7 @@ public class PersonEntity extends AbstractPersistable<Long> implements IPersonen
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        PersonEntity that = (PersonEntity) o;
+        Person that = (Person) o;
 
         if (getId() != that.getId()) return false;
         if (!Objects.equals(firstName, that.firstName)) return false;

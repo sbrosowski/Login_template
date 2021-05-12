@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ILoginResult} from '../../ServiceObjects/Interfaces/ILoginResult';
-import {ILogin} from '../../ServiceObjects/Interfaces/ILogin';
+import {IAuthenticationDetails} from '../../ServiceObjects/Interfaces/IAuthenticationDetails';
 import {Observable} from 'rxjs';
 import {Service} from '../AbstractService';
 import {IRegistration} from '../../ServiceObjects/Interfaces/IRegistration';
@@ -17,11 +17,16 @@ export class UserService extends Service {
     super();
   }
 
-  login(login: ILogin): Observable<ILoginResult> {
+  login(authenticationDetails: IAuthenticationDetails): Observable<ILoginResult> {
 
-    return this.http.post<ILoginResult>(this.getUrl() + '/authenticate', {
-      login
-    });
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+      })
+    };
+
+    const body = JSON.stringify(authenticationDetails);
+    return this.http.post<ILoginResult>(this.getUrl() + '/authenticate', body, httpOptions);
   }
 
   registration(registration: IRegistration): Observable<ILoginResult> {

@@ -1,20 +1,19 @@
-package com.pma.personendaten.entities;
+package com.pma.persistence.model.entities;
 
 import com.pma.Interfaces.entities.ILoginEntity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
 @Table(name = "login", schema = "pma")
-public class LoginEntity extends AbstractPersistable<Long> implements ILoginEntity {
+public class Login extends AbstractPersistable<Long> implements ILoginEntity {
 
+    @Basic
     @Column(name = "username")
     private String username;
+
     @Basic
     @Column(name = "password")
     private String password;
@@ -26,9 +25,12 @@ public class LoginEntity extends AbstractPersistable<Long> implements ILoginEnti
     @Column(name = "lastModified", nullable = false)
     private Date lastModified;
 
-
     @Column(name = "deletedTimeStamp", nullable = true)
     private Date deletedTimestamp;
+
+    @OneToOne
+    @JoinColumn(name = "personID")
+    private Person person;
 
     public String getUsername() {
         return username;
@@ -102,7 +104,7 @@ public class LoginEntity extends AbstractPersistable<Long> implements ILoginEnti
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        LoginEntity that = (LoginEntity) o;
+        Login that = (Login) o;
 
         if (loginTry != that.loginTry) return false;
         if (!Objects.equals(username, that.username)) return false;
