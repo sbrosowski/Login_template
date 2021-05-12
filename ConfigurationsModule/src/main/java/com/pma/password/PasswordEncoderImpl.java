@@ -6,7 +6,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class PasswordEncoderImpl implements PasswordEncoder {
 
     private final BCryptPasswordEncoder passwordEncoder;
-    private static final PasswordEncoderImpl _INSTANCE = null;
+    private static PasswordEncoderImpl _INSTANCE = null;
 
     private PasswordEncoderImpl() {
         passwordEncoder = new BCryptPasswordEncoder();
@@ -14,7 +14,7 @@ public class PasswordEncoderImpl implements PasswordEncoder {
 
     public static PasswordEncoderImpl getInstance() {
         if (_INSTANCE == null) {
-            return new PasswordEncoderImpl();
+            _INSTANCE = new PasswordEncoderImpl();
         }
 
         return _INSTANCE;
