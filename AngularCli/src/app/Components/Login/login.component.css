@@ -1,0 +1,30 @@
+.login-form {
+  border: 1px solid black;
+  width: 500px;
+  height: 200px;
+  background-color: lightgrey;
+}
+
+.login-username-textfield {
+  margin: auto;
+  height: 30px
+}
+
+.login-password-textfield {
+  height: 30px;
+  margin-top: 10px;
+}
+
+.login-page-buttons {
+  margin: 10px
+}
+
+.login-button {
+  height: 50px;
+  witdh: 100px;
+}
+
+.registration-button {
+  height: 50px;
+  witdh: 100px;
+}

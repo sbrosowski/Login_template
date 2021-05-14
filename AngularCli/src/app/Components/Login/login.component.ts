@@ -3,6 +3,7 @@ import {UserService} from '../../_service/Login/user.service';
 import {Router} from '@angular/router';
 import {IAuthenticationDetails} from '../../ServiceObjects/Interfaces/IAuthenticationDetails';
 import {AuthenticationDetails} from 'src/app/ServiceObjects/AuthenticationDetails';
+import {LoggedInUser} from '../../ServiceObjects/LoggedInUser';
 
 @Component({
   selector: 'app-login-component',
@@ -22,11 +23,16 @@ export class LoginComponent {
 
     const target = event.target;
     const login = this.createLogin(target);
+    const loggedInUser = new LoggedInUser();
 
     this.serviceToLogin.login(login).subscribe(data => {
 
-      if (data.successful) {
-        this.router.navigate(['/Home']);
+      const jwtToken = data.jwtToken;
+
+      if (jwtToken !== undefined) {
+        loggedInUser.user = login.username;
+        loggedInUser.jwtToken = jwtToken;
+        this.router.navigate(['/home']);
         this.serviceToLogin.isAuthenticated = true;
 
       } else {

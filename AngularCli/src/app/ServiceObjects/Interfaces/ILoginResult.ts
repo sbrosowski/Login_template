@@ -1,5 +1,4 @@
 export interface ILoginResult {
-  resultMessage: string;
-  successful: boolean;
+  jwtToken: string;
 }
 

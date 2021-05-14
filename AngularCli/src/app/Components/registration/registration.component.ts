@@ -3,6 +3,7 @@ import {UserService} from '../../_service/Login/user.service';
 import {Router} from '@angular/router';
 import {IRegistration} from '../../ServiceObjects/Interfaces/IRegistration';
 import {Registration} from '../../ServiceObjects/Registration';
+import {LoggedInUser} from '../../ServiceObjects/LoggedInUser';
 
 @Component({
   selector: 'app-registration',
@@ -22,11 +23,16 @@ export class RegistrationComponent implements OnInit {
     $event.preventDefault();
     const target = $event.target;
 
-    const registerObject = this.createRegistrationObject(target);
-    this.serviceToRegister.registration(registerObject).subscribe(data => {
+    const registration = this.createRegistrationObject(target);
+    this.serviceToRegister.registration(registration).subscribe(data => {
+      const loggedInUser = new LoggedInUser();
 
-      if (data.successful) {
-        this.router.navigate(['/Login']);
+      const jwtToken = data.jwtToken;
+
+      if (jwtToken !== undefined) {
+        loggedInUser.user = registration.username;
+        loggedInUser.jwtToken = jwtToken;
+        this.router.navigate(['/login']);
       }
     });
   }
