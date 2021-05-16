@@ -1,6 +1,6 @@
-<title>Willkommen beim Haushaltsbuch</title>
+<h1 style="text-align: center">Willkommen beim Haushaltsbuch</h1>
 
-<div style="margin:auto; width:50%">
+<div>
   <form class="login-form" (submit)="login($event)">
     <div style="margin:auto; width:50%">
       <input class="login-username-textfield" placeholder="Username" type="text" id="username"/>
@@ -9,7 +9,7 @@
       <input class="login-password-textfield" placeholder="Password" type="password" id="password"/>
     </div>
     <div style="margin:auto; width:50%" class="login-page-buttons">
-      <input class="login-button" style="margin-right: 5px" type="submit" value="Submit"/>
+      <input class="login-button" type="submit" value="Submit"/>
       <input class="registration-button" type="button" (click)="redirectToRegistration()" value="Registration"/>
     </div>
   </form>

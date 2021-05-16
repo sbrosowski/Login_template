@@ -3,16 +3,20 @@
   width: 500px;
   height: 200px;
   background-color: lightgrey;
+  margin: auto;
 }
 
 .login-username-textfield {
-  margin: auto;
-  height: 30px
+  margin-top: 15px;
+  height: 30px;
+  width: 195px
 }
 
 .login-password-textfield {
   height: 30px;
-  margin-top: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 195px;
 }
 
 .login-page-buttons {
@@ -21,10 +25,11 @@
 
 .login-button {
   height: 50px;
-  witdh: 100px;
+  width: 100px;
+  margin-right: 5px
 }
 
 .registration-button {
   height: 50px;
-  witdh: 100px;
+  width: 100px;
 }
