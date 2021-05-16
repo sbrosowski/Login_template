@@ -14,6 +14,7 @@ import {AuthGuard} from './_guard/auth.guard';
 import {RegistrationComponent} from './Components/registration/registration.component';
 import {LocalStorageService} from './_service/LocalStorage/localStorage.service';
 import {DemoMaterialModule} from '../material-module';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {DemoMaterialModule} from '../material-module';
         redirectTo: '/login',
         pathMatch: 'full'
       }
-    ])
+    ]),
+    FontAwesomeModule
   ],
   providers: [UserService, LocalStorageService, AuthGuard],
   bootstrap: [AppComponent]
