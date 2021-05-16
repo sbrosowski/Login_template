@@ -13,6 +13,7 @@ import {HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
 import {AuthGuard} from './_guard/auth.guard';
 import {RegistrationComponent} from './Components/registration/registration.component';
 import {LocalStorageService} from './_service/LocalStorage/localStorage.service';
+import {DemoMaterialModule} from '../material-module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {LocalStorageService} from './_service/LocalStorage/localStorage.service'
     MatSliderModule,
     MatFormFieldModule,
     FormsModule,
+    DemoMaterialModule,
     HttpClientModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF-TOKEN',
