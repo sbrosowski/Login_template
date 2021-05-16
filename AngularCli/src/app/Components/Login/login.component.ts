@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {IAuthenticationDetails} from '../../ServiceObjects/Interfaces/IAuthenticationDetails';
 import {AuthenticationDetails} from 'src/app/ServiceObjects/AuthenticationDetails';
 import {LoggedInUser} from '../../ServiceObjects/LoggedInUser';
+import {LocalStorageService} from '../../_service/LocalStorage/localStorage.service';
 
 @Component({
   selector: 'app-login-component',
@@ -13,8 +14,8 @@ import {LoggedInUser} from '../../ServiceObjects/LoggedInUser';
 export class LoginComponent {
   title = 'AngularCli';
 
-  constructor(private serviceToLogin: UserService,
-              private  router: Router) {
+  constructor(private serviceToLogin: UserService, private localstorageService: LocalStorageService,
+              private router: Router) {
 
   }
 
@@ -28,15 +29,11 @@ export class LoginComponent {
     this.serviceToLogin.login(login).subscribe(data => {
 
       const jwtToken = data.jwtToken;
-
       if (jwtToken !== undefined) {
         loggedInUser.user = login.username;
         loggedInUser.jwtToken = jwtToken;
+        this.localstorageService.setSettings(JSON.stringify(loggedInUser));
         this.router.navigate(['/home']);
-        this.serviceToLogin.isAuthenticated = true;
-
-      } else {
-        this.serviceToLogin.isAuthenticated = false;
       }
     });
   }

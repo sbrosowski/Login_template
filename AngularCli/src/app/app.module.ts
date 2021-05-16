@@ -5,12 +5,14 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './Components/Home/home.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {LoginComponent} from './Components/Login/login.component';
 import {UserService} from './_service/Login/user.service';
 import {HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
 import {AuthGuard} from './_guard/auth.guard';
 import {RegistrationComponent} from './Components/registration/registration.component';
+import {LocalStorageService} from './_service/LocalStorage/localStorage.service';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import {RegistrationComponent} from './Components/registration/registration.comp
     BrowserModule,
     BrowserAnimationsModule,
     MatSliderModule,
+    MatFormFieldModule,
     FormsModule,
     HttpClientModule,
     HttpClientXsrfModule.withOptions({
@@ -50,7 +53,7 @@ import {RegistrationComponent} from './Components/registration/registration.comp
       }
     ])
   ],
-  providers: [UserService, AuthGuard],
+  providers: [UserService, LocalStorageService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

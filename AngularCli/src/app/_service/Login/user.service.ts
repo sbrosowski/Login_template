@@ -10,9 +10,6 @@ import {IRegistration} from '../../ServiceObjects/Interfaces/IRegistration';
 @Injectable()
 export class UserService extends Service {
 
-  // tslint:disable-next-line:variable-name
-  private _isAuthenticated = false;
-
   constructor(private http: HttpClient) {
     super();
   }
@@ -33,14 +30,5 @@ export class UserService extends Service {
     return this.http.post<ILoginResult>(this.getUrl() + '/register', {
       registration
     });
-  }
-
-
-  get isAuthenticated(): boolean {
-    return this._isAuthenticated;
-  }
-
-  set isAuthenticated(value: boolean) {
-    this._isAuthenticated = value;
   }
 }
